@@ -1,0 +1,9 @@
+
+Git设置email和name
+
+git config --global user.email "tongsiw@163.com"
+
+git config --global user.name "T-bright"
+
+
+
