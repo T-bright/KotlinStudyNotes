@@ -8,6 +8,8 @@ import tsw.kotlin.newcharacteristics.a_kotlingrammar.a_basic.A_DataType
 import tsw.kotlin.newcharacteristics.a_kotlingrammar.b_condition.B_ConditionControl
 import tsw.kotlin.newcharacteristics.a_kotlingrammar.c_cyclecontrol.C_CycleControl
 import tsw.kotlin.newcharacteristics.a_kotlingrammar.d_classesandobjects.ClassAndObjectActivity
+import tsw.kotlin.newcharacteristics.a_kotlingrammar.e_function.FunctionActivity
+
 //参考：http://www.runoob.com/kotlin/kotlin-basic-types.html
 class MainActivity : AppCompatActivity() {
 
@@ -19,10 +21,17 @@ class MainActivity : AppCompatActivity() {
 //        c_CyclControl()
     }
 
-    fun gotoClassesAndObject(view : View){
-        var intent = Intent(this,ClassAndObjectActivity::class.java)
-       startActivity(intent)
-    };
+    fun gotoClassesAndObject(view: View) {
+        var intent = Intent(this, ClassAndObjectActivity::class.java)
+        startActivity(intent)
+    }
+
+    fun function(view: View) {
+        var intent = Intent(this, FunctionActivity::class.java)
+        startActivity(intent)
+    }
+
+
     private fun c_CyclControl() {
         var cCycleControl = C_CycleControl()
         cCycleControl.forCycleControl()
