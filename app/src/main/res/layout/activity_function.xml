@@ -35,12 +35,59 @@
                 android:text="有输入有输出参数"
                 android:layout_height="wrap_content"/>
     </LinearLayout>
-    <Button android:layout_width="wrap_content"
-            android:id="@+id/four"
-            android:text="有输入有输出参数"
-            android:layout_height="wrap_content"/>
-    <Button android:layout_width="wrap_content"
-            android:id="@+id/five"
-            android:text="可变参数"
-            android:layout_height="wrap_content"/>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button android:layout_width="wrap_content"
+                android:id="@+id/four"
+                android:text="有输入有输出参数"
+                android:layout_height="wrap_content"/>
+        <Button android:layout_width="wrap_content"
+                android:id="@+id/five"
+                android:text="可变参数"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="let函数"
+                android:id="@+id/six"
+                android:layout_height="wrap_content"/>
+        <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="with函数"
+                android:id="@+id/serven"
+                android:layout_height="wrap_content"/>
+        <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="run函数"
+                android:id="@+id/eight"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="apply函数"
+                android:id="@+id/nine"
+                android:layout_height="wrap_content"/>
+        <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="also函数"
+                android:id="@+id/ten"
+                android:layout_height="wrap_content"/>
+        <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:id="@+id/eleven"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
 </LinearLayout>

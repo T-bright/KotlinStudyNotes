@@ -22,6 +22,13 @@ class FunctionActivity : AppCompatActivity(), View.OnClickListener {
         three.setOnClickListener(this)
         four.setOnClickListener(this)
         five.setOnClickListener(this)
+        six.setOnClickListener(this)
+        serven.setOnClickListener(this)
+        eight.setOnClickListener(this)
+
+        nine.setOnClickListener(this)
+        ten.setOnClickListener(this)
+        eleven.setOnClickListener(this)
     }
 
     var index = 0
@@ -44,8 +51,35 @@ class FunctionActivity : AppCompatActivity(), View.OnClickListener {
                 four()
             }
             R.id.five -> {
-//                show.text = functionData.changeParameter("a", "b", "c", "d", "e")
-                show.text = functionData.changeParameter2(arrayOf("a","b","c","d","e"),arrayOf("f","g","h","i","j"))
+                flag = !flag
+                if (flag) show.text = functionData.changeParameter("a", "b", "c", "d", "e") else
+                    show.text = functionData.changeParameter2(
+                        arrayOf("a", "b", "c", "d", "e"),
+                        arrayOf("f", "g", "h", "i", "j")
+                    )
+            }
+            R.id.six -> {
+                functionData.functionLet()
+                show.text = "let函数"
+            }
+            R.id.serven -> {
+                functionData.functionWith()
+                show.text = "with函数"
+            }
+            R.id.eight -> {
+                functionData.functionRun()
+                show.text = "run函数"
+            }
+            R.id.nine -> {
+                functionData.functionApply()
+                show.text = "apply函数"
+            }
+            R.id.ten -> {
+                functionData.functionAlso()
+                show.text = "also函数"
+            }
+            R.id.eleven -> {
+
             }
         }
     }
