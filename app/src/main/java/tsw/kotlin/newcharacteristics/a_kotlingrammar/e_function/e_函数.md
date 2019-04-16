@@ -1,6 +1,6 @@
 # 一、基本用法
 先看一个函数的基本申明
-- 无输入无输出参数
+## 1、无输入无输出参数
   ```
    public fun noInputAndNoOutPut_Parameters(): Unit {
 
@@ -9,7 +9,7 @@
   上面是一个无参无返回值的函数。public表示这个函数是公开的，而Kotlin默认就是public，所以public可以不用写。
    ***Unit*** 表示一个函数没有返回值，类似于java中的void，Kotlin中Unit也可以省略不写。
 
-- 无输入有输出参数
+## 2、无输入有输出参数
   ```
    public fun noInputAndHaveOutPut_Parameters(): String {
         return "无输入有输出参数"
@@ -17,7 +17,7 @@
   ```
   这是一个有返回值的函数，返回值是String类型的。如果返回值是Boolean类型的，把String换成Boolean即可。其他返回值类型，同理。
 
-- 有输入有输出参数
+## 3、有输入有输出参数
    ```
     public fun hvaeInputAndHaveOutPut_Parameters(input: String): String {
         return "有输入有输出参数：${input}"
@@ -35,7 +35,7 @@
    是不是很像，var对应fun；str对应noInputAndHaveOutPut_Parameters()。当然函数有一个不需要返回值的情况，然而Kotlin中的函数是必须有返回值的，不需要返回值的情况，用 ***Unit*** 表示。
    传入的参数也是，很好记忆。
    
-- 输入的参数可以为空
+## 4、输入的参数可以为空
   
   如果给上面的函数传参
   ```
@@ -48,7 +48,7 @@
   }
   ```
   
-- 默认参数
+## 5、默认参数
 
   Kotlin中参数是可以有默认值的，代码如下：
   ```
@@ -67,7 +67,7 @@
   FunctionData().defaultParameter(two = "不是默认参数two")
   ```
 
-- 可变参数
+## 6、可变参数
   
   有时候我们需要传入的参数的个数是不确定的，此时我们可以使用 可变参数，用vararg 修饰。代码如下
   ```
@@ -164,8 +164,9 @@
         }
     }
    ```
+
    
-## 5、also函数
+## 5、also函数 
    also和let很像,唯一的区别就是返回值的不一样，also适用于let函数的任何场景。also函数返回的是传入对象的本身,而let函数返回时let代码块的最后一行的值。一般用于多个扩展函数的链式调用
    ```
    fun functionAlso() {
