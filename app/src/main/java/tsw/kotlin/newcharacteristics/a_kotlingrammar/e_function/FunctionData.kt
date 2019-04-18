@@ -58,7 +58,22 @@ class FunctionData {
         return stringBuilder.toString()
     }
 
+    //如果一个函数只有一个一行切有return关键字，那么我们用 = 来代替{}
+    fun sum(x: Int, y: Int) = x + y
 
+
+    //--------------------------------高阶函数---------------------------------------------------------------------------
+
+    fun functionFun(one: String, two: String): String {
+        return "${one} ${two}"
+    }
+
+    //形参是函数，返回值也是函数
+    fun functionFunc(f1: String, f2: String, method: (one: String, two: String) -> String): String {
+        return method(f1, f2)
+    }
+
+    //let函数
     fun functionLet() {
         var arr = arrayOf("a", "b", "c", null)
         var type = arr.forEach {
@@ -74,6 +89,7 @@ class FunctionData {
         Log.e(TAG, size.toString())
     }
 
+    //with函数
     fun functionWith() {
         var dataClass = DataClass("张三", "男", 12)
         var name = with(dataClass) {
@@ -83,6 +99,7 @@ class FunctionData {
         Log.e(TAG, name.toString())
     }
 
+    //fun函数
     fun functionRun() {
         var arr = arrayOf("a", "b", "c", null)
         var type = arr.forEach {
@@ -99,7 +116,7 @@ class FunctionData {
         Log.e(TAG, size.toString())
     }
 
-
+    //apply函数
     fun functionApply() {
         var dataClass: DataClass? = DataClass("张三", null, 12)
         var applyObject = dataClass?.apply {
@@ -116,6 +133,7 @@ class FunctionData {
         }
     }
 
+    //also函数
     fun functionAlso() {
         var dataClass: DataClass? = DataClass("张三", null, 12)
         var alsoObject = dataClass.also {
@@ -124,5 +142,25 @@ class FunctionData {
         }
         Log.e(TAG, alsoObject.toString())
     }
+
+    //filter函数
+    fun functionFilter() {
+//        (0..6).map(::factorial).filter { it % 2 == 0 }.forEach(::println)
+        (0..6).map(::factorial).filter { if(it > 0){return@filter true} else return@filter false }.forEach(::println)
+
+    }
+
+    //filterIndexed、TakeWhile、Map、Flatmap、Fold、Reduce
+    fun filters(it: Int): Boolean {
+        return it % 2 == 0
+    }
+
+
+    private fun factorial(n: Int): Int {
+        if (n == 0) return 1
+        //如果n >0，本次的acc*下一次的acc
+        return (1..n).reduce { acc, i -> acc * i }
+    }
+
 
 }

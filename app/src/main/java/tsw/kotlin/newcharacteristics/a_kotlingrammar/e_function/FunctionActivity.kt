@@ -79,10 +79,20 @@ class FunctionActivity : AppCompatActivity(), View.OnClickListener {
                 show.text = "also函数"
             }
             R.id.eleven -> {
+                eleven()
+            }
+            R.id.twelve ->{
+
+            }
+            R.id.thirteen ->{
+
+            }
+            R.id.fourteen ->{
 
             }
         }
     }
+
 
     private fun four() {
         when (index) {
@@ -96,7 +106,26 @@ class FunctionActivity : AppCompatActivity(), View.OnClickListener {
             }
             2 -> {
                 show.text = functionData.defaultParameter(two = "不是默认参数two")
-                index = 3
+                index = 0
+            }
+
+        }
+
+    }
+
+    private fun eleven() {
+        when (index) {
+            0 -> {
+                show.text = functionData.functionFunc("第一种写法： ", "用双冒号 :: 表示", functionData::functionFun)
+                index = 1
+            }
+            1 -> {
+                show.text = functionData.functionFunc("第二种写法： ","对象直接调用方法",{ x, y -> functionData.functionFun(x, y) })
+                index = 2
+            }
+            2 -> {
+                show.text = functionData.functionFunc("第三种写法： ", "用lambda表达式", { x, y -> "${x} ${y}" })
+                index = 0
             }
 
         }

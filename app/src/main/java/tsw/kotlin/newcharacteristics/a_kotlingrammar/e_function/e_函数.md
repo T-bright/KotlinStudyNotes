@@ -1,4 +1,4 @@
-# 一、基本用法
+# 一、函数的基本用法
 先看一个函数的基本申明
 ## 1、无输入无输出参数
   ```
@@ -86,9 +86,54 @@
   //传的参数的个数可以是任意个数
   FunctionData().changeParameter("a", "b", "c", "d", "e") 
   ```
+## 7、只有单个表达式的方法 
+  如果一个函数只有一个一行切有return关键字，那么我们用 = 来代替{}，代码如下：
+  ```
+  fun sum(x: Int, y: Int) {
+     return x + y
+  }
+
+  fun sum(x: Int, y: Int) = x + y //这个就是上面那个函数的简写
+  ```
+
+# 二、高阶函数用法
+## 1、将一个函数作为另一个函数的参数和返回值
+   kotiin中的函数是可以可以作为另一个函数的参数和返回值的。这样的函数叫做高阶函数。代码如下：
+   ```
+   class FunctionData {
+      //这个函数将会以参数的形式传到另一个函数中
+      fun functionFun(one: String, two: String): String {
+          return "${one} ${two}"
+      }
    
-# 二、特殊的函数(let、with、run、apply、also)
-## 1、let函数
+      //接受一个参数是函数类型的参数：method，返回值也是一个函数
+      fun functionFunc(f1: String, f2: String, method: (one: String, two: String) -> String): String {
+          return method(f1, f2)
+      }
+   }
+   ```
+   上面 ***functionFunc*** 函数的形参method是一个函数，格式为  ***形参名(形参名 : 类型) -> 返回值类型***
+   
+   接下来将是上面functionFunc函数的具体调用，有三种调用方式，具体代码如下：
+   ```
+   var functionData = FunctionData()
+   
+   functionData.functionFunc("第一种写法： ", "用双冒号 :: 表示", functionData::functionFun)
+   
+   functionData.functionFunc("第二种写法： ","对象直接调用方法",{ x, y -> functionData.functionFun(x, y) })
+   
+   functionData.functionFunc("第三种写法： ", "用lambda表达式", { x, y -> "${x} ${y}" })
+   ```
+   第一种采用双冒号(::)表示。 "::"不能直接用在函数或者其他地方调用函数，一般都是将函数作为参数传递的时候使用，使用的格式为  ***类的对象 :: 函数名*** 。当然如果两个方法都是在同一个类中，可以写成
+   ***this :: 函数名 ***。this是可以省略的，如***:: 函数名***
+   
+   另外(::)还可以用在反射中，很方便，代码如下
+   ```
+   FunctionData::class.simpleName
+   FunctionData::class.java
+   ```
+
+## 2、let函数
    let函数的作用就是可以避免写一些判断null的操作。当然也可以使得代码更加优雅一点。
    ```
    fun functionLet(){
@@ -109,7 +154,7 @@
    在let中，it表示其引用的对象，it不可以省略，可以通过it调用引用对象的属性和相关方法。
    返回值为let代码块的最后一行。如果let代码块的最后一行如果有返回值，则返回该值；如果没有，则let代码块没有返回值
     
-## 2、with函数
+## 3、with函数
    with函数的作用就是当调用一个对象的多个方法和属性时，可以省去重复的类名。直接调用对象的方法和属性即可。最常用的地方就是RecyclerView中onBinderViewHolder中
    ```
    fun functionWith() {
@@ -124,7 +169,7 @@
    with函数是将某对象作为函数的参数，在函数块内可以通过 this 指代该对象,this可以省略不写。
    返回值为with代码块的最后一行。如果with代码块的最后一行如果有返回值，则返回该值；如果没有，则with代码块没有返回值
     
-## 3、run函数
+## 4、run函数
    run函数适用于let、with函数的任何场景，可以说run函数其实就是let和with函数的结合体。run函数可以像let函数进行对象空值判断，也可以像with函数那样省略类名
    ```
    fun functionRun() {
@@ -144,7 +189,7 @@
     }
    ``` 
    返回值为run代码块的最后一行。如果run代码块的最后一行如果有返回值，则返回该值；如果没有，则run代码块没有返回值
-## 4、apply函数
+## 5、apply函数
    apply函数和run函数很像，唯一不同点就是它们各自返回的值不一样，run函数是返回最后一行代码的值，而apply函数的返回的是传入对象的本身。根据这个特性，apply函数一般用于对象初始化的时候，对对象的属性进行赋值。
    同时他可以进行非空判定，可以用于多层级非空判定逻辑
    ```
@@ -166,7 +211,7 @@
    ```
 
    
-## 5、also函数 
+## 6、also函数 
    also和let很像,唯一的区别就是返回值的不一样，also适用于let函数的任何场景。also函数返回的是传入对象的本身,而let函数返回时let代码块的最后一行的值。一般用于多个扩展函数的链式调用
    ```
    fun functionAlso() {
@@ -179,3 +224,5 @@
     }
    ```
   
+## 7、Filter函数 
+   Filter函数，顾名思义就是用来过滤的

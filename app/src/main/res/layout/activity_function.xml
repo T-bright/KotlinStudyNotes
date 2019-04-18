@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/show"/>
     <LinearLayout
+            android:gravity="center"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -36,6 +37,7 @@
                 android:layout_height="wrap_content"/>
     </LinearLayout>
     <LinearLayout
+
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -50,7 +52,7 @@
     </LinearLayout>
 
     <LinearLayout
-            android:layout_marginTop="25dp"
+            android:gravity="center"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -71,8 +73,8 @@
                 android:layout_height="wrap_content"/>
     </LinearLayout>
     <LinearLayout
-            android:layout_marginTop="25dp"
             android:orientation="horizontal"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <Button android:layout_width="0dp"
@@ -87,7 +89,30 @@
                 android:layout_height="wrap_content"/>
         <Button android:layout_width="0dp"
                 android:layout_weight="1"
+                android:text="参数是函数"
                 android:id="@+id/eleven"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="filter函数"
+                android:id="@+id/twelve"
+                android:layout_height="wrap_content"/>
+        <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="filterIndexed函数"
+                android:id="@+id/thirteen"
+                android:layout_height="wrap_content"/>
+        <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="TakeWhile函数"
+                android:id="@+id/fourteen"
                 android:layout_height="wrap_content"/>
     </LinearLayout>
 </LinearLayout>
