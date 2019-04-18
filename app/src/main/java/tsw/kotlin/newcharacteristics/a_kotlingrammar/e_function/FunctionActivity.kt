@@ -29,6 +29,10 @@ class FunctionActivity : AppCompatActivity(), View.OnClickListener {
         nine.setOnClickListener(this)
         ten.setOnClickListener(this)
         eleven.setOnClickListener(this)
+
+        twelve.setOnClickListener(this)
+        thirteen.setOnClickListener(this)
+        fourteen.setOnClickListener(this)
     }
 
     var index = 0
@@ -82,7 +86,7 @@ class FunctionActivity : AppCompatActivity(), View.OnClickListener {
                 eleven()
             }
             R.id.twelve ->{
-
+                functionData.functionFilter()
             }
             R.id.thirteen ->{
 

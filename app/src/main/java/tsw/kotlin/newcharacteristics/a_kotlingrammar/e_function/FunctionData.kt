@@ -145,22 +145,13 @@ class FunctionData {
 
     //filter函数
     fun functionFilter() {
-//        (0..6).map(::factorial).filter { it % 2 == 0 }.forEach(::println)
-        (0..6).map(::factorial).filter { if(it > 0){return@filter true} else return@filter false }.forEach(::println)
 
+        (0..6).filter { it % 2 == 0 }.forEach{Log.e(TAG, it.toString())}
+
+        //可以是if...else
+        (0..6).filter { if(it > 0){return@filter true} else return@filter false }.forEach{Log.e(TAG, it.toString())}
     }
 
     //filterIndexed、TakeWhile、Map、Flatmap、Fold、Reduce
-    fun filters(it: Int): Boolean {
-        return it % 2 == 0
-    }
-
-
-    private fun factorial(n: Int): Int {
-        if (n == 0) return 1
-        //如果n >0，本次的acc*下一次的acc
-        return (1..n).reduce { acc, i -> acc * i }
-    }
-
 
 }
