@@ -226,4 +226,100 @@
   
 ## 7、Filter函数 
    Filter函数，顾名思义就是用来过滤的,Filter代码块里面需要一个Boolean类型的，代码如下
+   ```
+   fun functionFilter() {
+
+        (0..6).filter { it % 2 == 0 }.forEach{Log.e(TAG, it.toString())}
+
+        //可以是if...else
+        (0..6).filter { if(it > 0){return@filter true} else return@filter false }.forEach{Log.e(TAG, it.toString())}
+    }
+   ```
+   上面就是Filter的用法，当然还有几个和Filter类似的函数，如:
+   - 1、filterNot和filterNotTo：与filter相反，它们是找出不符合的
+   - 2、filterIndexed()和filterIndexedTo()：过滤掉不想要的索引元素
+   - 3、filterNotNull()和filterNotNullTo()：过滤掉空的元素
+   - 4、filterIsInstance()和filterIsInstanceTo()：筛选指定类型的元素
+   
+   具体代码如下：
+   ```
+   arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).filterNotTo(mutableListOf<Int>(1, 2, 3)) {it > 0 }.forEach { Log.e(TAG, "filterNotTo : ${it.toString()}") }
+   //还可以这么传
+   arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).filterNot { boo(it) }.forEach { Log.e(TAG, "filterNot : ${it.toString()}") }
+   
+   arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).filterIndexed {index, i -> index % 2 == 0 }.forEach {  Log.e(TAG, "filterIndexed : ${it.toString()}") }
+   arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).filterIndexedTo(mutableListOf<Int>(1, 2, 3)){index, i -> index % 2 == 0 }.forEach {  Log.e(TAG, "filterIndexedTo : ${it.toString()}") }
+   
+   arrayOf("a","b","c",null).filterNotNull().forEach { Log.e(TAG, "filterNotNull : ${it.toString()}") }
+   arrayOf("a","b","c",null).filterNotNullTo(mutableListOf("a",null)).forEach {  Log.e(TAG, "filterNotNullTo : ${it.toString()}") }
+   
+   arrayOf("a","b","c",1,2,3).filterIsInstance(String::class.java).forEach { Log.e(TAG, "filterIsInstance : ${it.toString()}") }
+   arrayOf("a","b","c",1,2,3).filterIsInstanceTo(mutableListOf("c","d",1,2,3,4),String::class.java).forEach { Log.e(TAG, "filterIsInstanceTo : ${it.toString()}") }
+   
+   
+    private fun boo(it: Int): Boolean {
+        return it > 0
+    }
+   ```
+## 8、TakeWhile函数
+   takeWhile：当遇到不符合条件的情况，程序终止。比如说，在将（0...10）这个数组里小于5的都取出来
+   ```
+   (1..10).takeWhile { it < 5 }.forEach { Log.e(TAG, "TakeWhile : ${it.toString()}") }//这个输出1,2,3,4
+   
+   arrayOf(1,10,2,3,4,5,6,7,8,9).takeWhile { it < 5 }.forEach { Log.e(TAG, "TakeWhile : ${it.toString()}") }//这个只输出1
+   ```
+   但是要注意的是，使用takeWhile，当第一次遇到不符合条件的情况，就直接终止程序，所以如果上述数组不是顺序的，要取出数组里小于5的数可能会出错
+   
+   
+## 9、Map函数
+   map的含义就是映射。将数组里面原有的值，按照一定的表达式转换成另外的值
+   ```
+   (1..5).map { it * 2 }.forEach { Log.e(TAG, "map : ${it.toString()}") }//将数组里所有的值都乘以2
+   ```
+   上述的[1,2,3,4,5]数组经过map转换之后，数组里面的元素就会变成[2,4,6,8,10]
+   
+   
+## 9、FlatMap函数
+   flatMap函数会把多个数组转换成一个数组。
+   ```
+   var arr1 = arrayOf(1, 2, 3)
+   var arr2 = arrayOf(4, 5, 6)
+   var arr3 = arrayListOf(arr1, arr2)
+   
+   arr3.forEach{Log.e(TAG, "arr3 forEach : ${it.toString()}") }//这里forEach代码块里的it表示arr1和arr2对象的引用
+   
+   arr3.flatMap { iterator -> iterator.asList()}.forEach { Log.e(TAG, "flatMap : ${it.toString()}") }//这里forEach代码块里的it表示arr1和arr2数组合二为一之后数组里的元素
+   ```
+   
+## 10、Reduce函数
+   reduce函数主要是用于集合中元素的计算操作，比如对集合中的元素求和、求阶层等等。可以和map函数一起使用
+   ```
+   (1..5).map { (1..it).reduce { acc, i -> acc * i } }.forEach { Log.e(TAG, "reduce : ${it.toString()}") }//通过map转换，把集合中的每一个数转换成相应的阶层数
+   (1..5).map { (1..it).reduce { acc, i -> i * i } }.forEach { Log.e(TAG, "reduce : ${it.toString()}") }//通过map转换，把集合中的每一个数转换成相应的平方数。但是显然没必要写的这么麻烦，参照map，直接it*it就可以实现
+   ```
+## 11、Fold函数
+   fold函数主要用于累加的操作。比如说字符串的拼接
+   ```
+    var foldResStr = arrayOf("11", 22, "33").fold(StringBuffer()) { sb, i -> sb.append(i).append(",") }
+    Log.e(TAG, "Fold : ${foldResStr.toString()}")//打印结果：11,22,33
+   ```
+## 12、Use函数
+   use函数只能被实现了Closeable的对象使用，它会在程序结束时，自动调用close方法，常用语文件操作
+   ```
+   thread {
+       var inputStream = context.assets.open("test.txt")
+       var text = BufferedReader(InputStreamReader(inputStream, "UTF-8")).use {
+           var sb = StringBuilder()
+           var readLine: String?
+           while (true) {
+              readLine = it.readLine() ?: break
+              sb.append(readLine)
+           }
+              sb.toString()
+       }
+       Log.e(TAG, "Fold : ${text}")
+   }
+   ```
+   
+   
    

@@ -33,6 +33,10 @@ class FunctionActivity : AppCompatActivity(), View.OnClickListener {
         twelve.setOnClickListener(this)
         thirteen.setOnClickListener(this)
         fourteen.setOnClickListener(this)
+
+        fifteen.setOnClickListener(this)
+        sixteen.setOnClickListener(this)
+        seventeen.setOnClickListener(this)
     }
 
     var index = 0
@@ -85,14 +89,23 @@ class FunctionActivity : AppCompatActivity(), View.OnClickListener {
             R.id.eleven -> {
                 eleven()
             }
-            R.id.twelve ->{
+            R.id.twelve -> {
                 functionData.functionFilter()
             }
-            R.id.thirteen ->{
-
+            R.id.thirteen -> {
+                functionData.functionTakeWhile()
             }
-            R.id.fourteen ->{
-
+            R.id.fourteen -> {
+                functionData.functionMap()
+            }
+            R.id.fifteen -> {
+                functionData.functionReduce()
+            }
+            R.id.sixteen -> {
+                functionData.functionFold()
+            }
+            R.id.seventeen -> {
+                functionData.functionUse(this)
             }
         }
     }
@@ -124,7 +137,7 @@ class FunctionActivity : AppCompatActivity(), View.OnClickListener {
                 index = 1
             }
             1 -> {
-                show.text = functionData.functionFunc("第二种写法： ","对象直接调用方法",{ x, y -> functionData.functionFun(x, y) })
+                show.text = functionData.functionFunc("第二种写法： ", "对象直接调用方法", { x, y -> functionData.functionFun(x, y) })
                 index = 2
             }
             2 -> {

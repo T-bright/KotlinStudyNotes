@@ -106,13 +106,34 @@
                 android:layout_height="wrap_content"/>
         <Button android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="filterIndexed函数"
+                android:text="TakeWhile函数"
                 android:id="@+id/thirteen"
                 android:layout_height="wrap_content"/>
         <Button android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="TakeWhile函数"
+                android:text="Map函数"
                 android:id="@+id/fourteen"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Reduce函数"
+                android:id="@+id/fifteen"
+                android:layout_height="wrap_content"/>
+        <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Fold函数"
+                android:id="@+id/sixteen"
+                android:layout_height="wrap_content"/>
+        <Button android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="Use函数"
+                android:id="@+id/seventeen"
                 android:layout_height="wrap_content"/>
     </LinearLayout>
 </LinearLayout>

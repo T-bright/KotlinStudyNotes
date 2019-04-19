@@ -1,9 +1,14 @@
 package tsw.kotlin.newcharacteristics.a_kotlingrammar.e_function
 
+import android.content.Context
 import android.util.Log
 import tsw.kotlin.newcharacteristics.a_kotlingrammar.d_classesandobjects.DataClass
 import tsw.kotlin.newcharacteristics.a_kotlingrammar.d_classesandobjects.DataClassTwo
+import java.io.BufferedReader
+import java.io.FileReader
+import java.io.InputStreamReader
 import java.lang.StringBuilder
+import kotlin.concurrent.thread
 
 class FunctionData {
     val TAG = "FunctionData"
@@ -145,13 +150,106 @@ class FunctionData {
 
     //filter函数
     fun functionFilter() {
+        var originalArr = arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
 
-        (0..6).filter { it % 2 == 0 }.forEach{Log.e(TAG, it.toString())}
+        var destinationArr = mutableListOf<Int>(1, 2, 3)
+
+        originalArr.filter { it > 0 }.forEach { Log.e(TAG, "filter : ${it.toString()}") }
 
         //可以是if...else
-        (0..6).filter { if(it > 0){return@filter true} else return@filter false }.forEach{Log.e(TAG, it.toString())}
+        originalArr.filter {
+            if (it > 0) {
+                return@filter true
+            } else {
+                return@filter false
+            }
+        }.forEach { Log.e(TAG, "filter : ${it.toString()}") }
+
+
+        arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).filterNotTo(mutableListOf<Int>(1, 2, 3)) { it > 0 }
+            .forEach { Log.e(TAG, "filterNotTo : ${it.toString()}") }
+        arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).filterNot { boo(it) }
+            .forEach { Log.e(TAG, "filterNot : ${it.toString()}") }
+
+        arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).filterIndexed { index, i -> index % 2 == 0 }
+            .forEach { Log.e(TAG, "filterIndexed : ${it.toString()}") }
+        arrayOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).filterIndexedTo(
+            mutableListOf<Int>(
+                1,
+                2,
+                3
+            )
+        ) { index, i -> index % 2 == 0 }.forEach { Log.e(TAG, "filterIndexedTo : ${it.toString()}") }
+        arrayOf("a", "b", "c", null).filterNotNull().forEach { Log.e(TAG, "filterNotNull : ${it.toString()}") }
+        arrayOf("a", "b", "c", null).filterNotNullTo(mutableListOf("a", null))
+            .forEach { Log.e(TAG, "filterNotNullTo : ${it.toString()}") }
+        arrayOf("a", "b", "c", 1, 2, 3).filterIsInstance(String::class.java)
+            .forEach { Log.e(TAG, "filterIsInstance : ${it.toString()}") }
+        arrayOf("a", "b", "c", 1, 2, 3).filterIsInstanceTo(mutableListOf("c", "d", 1, 2, 3, 4), String::class.java)
+            .forEach { Log.e(TAG, "filterIsInstanceTo : ${it.toString()}") }
+
     }
 
-    //filterIndexed、TakeWhile、Map、Flatmap、Fold、Reduce
+
+    private fun boo(it: Int): Boolean {
+        return it > 0
+    }
+
+
+    fun functionTakeWhile() {
+        (1..10).takeWhile { it < 5 }.forEach { Log.e(TAG, "TakeWhile : ${it.toString()}") }
+
+        arrayOf(1, 10, 2, 3, 4, 5, 6, 7, 8, 9).takeWhile { it < 5 }
+            .forEach { Log.e(TAG, "TakeWhile : ${it.toString()}") }
+    }
+
+
+    fun functionMap() {
+        (1..5).map { it * 2 }.forEach { Log.e(TAG, "map : ${it.toString()}") }//将数组里所有的值都乘以2
+        Log.e(TAG, "\n\n")
+
+        var arr1 = arrayOf(1, 2, 3)
+        var arr2 = arrayOf(4, 5, 6)
+        var arr3 = arrayListOf(arr1, arr2)
+        arr3.forEach { Log.e(TAG, "arr3 forEach : ${it.toString()}") }
+        Log.e(TAG, "\n\n")
+        arr3.flatMap { iterator -> iterator.asList() }.forEach { Log.e(TAG, "flatMap : ${it.toString()}") }
+
+    }
+
+
+    fun functionReduce() {
+        (1..5).map { (1..it).reduce { acc, i -> acc * i } }
+            .forEach { Log.e(TAG, "reduce : ${it.toString()}") }//通过map转换，把集合中的每一个数转换成相应的阶层数
+        (1..5).map { (1..it).reduce { acc, i -> i * i } }.forEach {
+            Log.e(
+                TAG,
+                "reduce : ${it.toString()}"
+            )
+        }//通过map转换，把集合中的每一个数转换成相应的平方数。但是显然没必要写的这么麻烦，参照map，直接it*it就可以实现
+
+    }
+
+    fun functionFold() {
+        var foldResStr = arrayOf("11", 22, "33").fold(StringBuffer()) { sb, i -> sb.append(i).append(",") }
+        Log.e(TAG, "Fold : ${foldResStr.toString()}")//打印结果：11,22,33
+    }
+
+    fun functionUse(context: Context) {
+        thread {
+            var inputStream = context.assets.open("test.txt")
+            var text = BufferedReader(InputStreamReader(inputStream, "UTF-8")).use {
+                var sb = StringBuilder()
+                var readLine: String?
+                while (true) {
+                    readLine = it.readLine() ?: break
+                    sb.append(readLine)
+                }
+                sb.toString()
+            }
+            Log.e(TAG, "Fold : ${text}")
+        }
+    }
+
 
 }
