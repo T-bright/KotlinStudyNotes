@@ -78,6 +78,21 @@ class C_CycleControl {
         }
         println("continue ：${index}")
 
+        //跳到相应的循环体中
+        a@ for (i in 1..5) {
+            println("a循环")
+            b@ for (j in 1..5) {
+                println("b循环")
+                if (i == 2) {
+                    continue@a//结束当前的b循环，跳到a循环
+                } else if (i == 3) {
+                    break@a//结束所有循环
+                }
+            }
+        }
+
+
+
         index = 0
         for (i in 1..10) {
             if (i == 5) {
@@ -86,20 +101,6 @@ class C_CycleControl {
             index = i
         }
         println("return ：${index}")
-
-
-        a@ for (i in 1..5) {
-            println("a循环")
-            b@ for (j in 1..5) {
-                println("b循环")
-                if (j == 2) {
-                    continue@a
-                } else if (j == 3) {
-                    break@a
-                }
-            }
-        }
-
     }
 
     //while循环控制

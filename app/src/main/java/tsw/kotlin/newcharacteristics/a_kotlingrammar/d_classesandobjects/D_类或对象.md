@@ -26,11 +26,11 @@ class D_ClassesAndObjects(name: String, sex: String) {
 通过代码可以看到，二级构造函数调用了主构造函数，所以当我们以下面的方式去实例化对象的时候，主构造函数的代码块init方法也会
 执行
 ```
-    var dClassesAndObjects = D_ClassesAndObjects("张三","男",15)
+var dClassesAndObjects = D_ClassesAndObjects("张三","男",15)
     
-    //打印结果
-    这是主构造函数的内部方法，name = 张三 ,sex = 男
-    这是二级构造函数的内部方法，name = 张三 ,sex = 男,age = 15
+//打印结果
+这是主构造函数的内部方法，name = 张三 ,sex = 男
+这是二级构造函数的内部方法，name = 张三 ,sex = 男,age = 15
 ```
 还有一个显著的特点就是构造方法可以有默认参数
 
@@ -108,18 +108,18 @@ class D_ClassesAndObjects(name: String, sex: String) {
 ```
 还有一种是在主构造函数上声明的(二级函数上不可以声明)，也是用var和val表示，如下代码
 ```
-    class D_ClassesAndObjects constructor(var name: String, val sex: String, age: Int = 8) {
-        var mAddress: String = "";
+class D_ClassesAndObjects constructor(var name: String, val sex: String, age: Int = 8) {
+    var mAddress: String = "";
     
-        init {
-            println("这是主构造函数的内部方法，name = ${name} ,sex = ${sex},age = ${age}")
-        }
-    
-        fun setAddress(address: String) {//成员方法
-            mAddress = address
-            println("这是setAddress方法，name = ${name} ,mAddress = ${mAddress}")
-        }
+    init {
+        println("这是主构造函数的内部方法，name = ${name} ,sex = ${sex},age = ${age}")
     }
+    
+    fun setAddress(address: String) {//成员方法
+        mAddress = address
+        println("这是setAddress方法，name = ${name} ,mAddress = ${mAddress}")
+    }
+}
 ```
 - 2、成员方法的调用
 直接上代码，语法和java类似
@@ -137,15 +137,15 @@ class D_ClassesAndObjects constructor(var name: String, val sex: String, age: In
     }
 }
 
-    //-------------------下面是调用代码------------------------------------------------------
-    var dClassesAndObjects = D_ClassesAndObjects("张三","男")
-    dClassesAndObjects.setAddress("上海")
-    println("获取成员属性，name = ${dClassesAndObjects.name}")
+//-------------------下面是调用代码------------------------------------------------------
+var dClassesAndObjects = D_ClassesAndObjects("张三","男")
+dClassesAndObjects.setAddress("上海")
+println("获取成员属性，name = ${dClassesAndObjects.name}")
     
-    //-------------------下面是打印结果-----------------------------------------------------
-    这是主构造函数的内部方法，name = 张三 ,sex = 男,age = 8
-    这是setAddress方法，name = 张三 ,mAddress = 上海
-    获取成员属性，name = 张三
+//-------------------下面是打印结果-----------------------------------------------------
+这是主构造函数的内部方法，name = 张三 ,sex = 男,age = 8
+这是setAddress方法，name = 张三 ,mAddress = 上海
+获取成员属性，name = 张三
 ```
 可以看到调用成员方法和成员属性只要用下面的方式调用就行了
 ```
@@ -174,12 +174,12 @@ class D_ClassesAndObjects {
     }
 }
 
-    //-------------------下面是调用代码------------------------------------------------------
-    //D_ClassesAndObjects.CompanionObject.isMan(D_ClassesAndObjects.MANFLAG)//伴生对象的名字可以省略
-     D_ClassesAndObjects.isMan(D_ClassesAndObjects.MANFLAG)
+//-------------------下面是调用代码------------------------------------------------------
+//D_ClassesAndObjects.CompanionObject.isMan(D_ClassesAndObjects.MANFLAG)//伴生对象的名字可以省略
+D_ClassesAndObjects.isMan(D_ClassesAndObjects.MANFLAG)
 
-    //-------------------下面是打印结果-----------------------------------------------------
-    男
+//-------------------下面是打印结果-----------------------------------------------------
+男
 ```
 所以我们可以根据伴生的对象的性质，去做一些常量的声明，或一些工具类
 
@@ -279,8 +279,8 @@ class SpecificClass(var name : String = "我是特殊类"){
 ```
 ***嵌套类的实例化：嵌套类的类名前面添加外部类的类名***
 ```
-     var specificClassOne = SpecificClass.SpecificClassOne()
-     specificClassOne.getClassName()
+var specificClassOne = SpecificClass.SpecificClassOne()
+specificClassOne.getClassName()
 ```
 ## 2、内部类
 刚才说了嵌套类无法调用到外部类的成员属性和方法，那么怎么去调用呢？那就是在嵌套类的class前面加一个inner关键字，
@@ -297,9 +297,9 @@ class SpecificClass(var name : String = "我是特殊类") {
 ```
 ***内部类的实例化：先实例化外部类，然后通过外部类的实例对象去调用内部类的构造函数***
 ```
-     //内部类的调用
-     var specificClassTwo = SpecificClass("内部类").SpecificClassTwo()
-     specificClassTwo.getName()
+//内部类的调用
+var specificClassTwo = SpecificClass("内部类").SpecificClassTwo()
+specificClassTwo.getName()
 ```
 ## 3、数据类
 在开发中经常使用到存放数据的实体类，如：存放用户信息的类。因此，Kotlin推出了名为数据类的特殊类，用data修饰。Kotlin数据类有以下几个特点：
@@ -316,14 +316,14 @@ data class DataClass(var name: String, var sex: String, var age: Int){
 ```
 相关调用
 ```
-     var dataClassOne = DataClass("张三","男",14)
-     var dataClassTwo = dataClassOne.copy()
-     var dataClassThree =dataClassOne.copy(name = "李四",sex = "女")
-     println(dataClassOne)
-     println(dataClassTwo)
-     println(dataClassThree)
-     println(dataClassOne.equals(dataClassTwo))
-     println(dataClassOne.equals(dataClassThree))
+var dataClassOne = DataClass("张三","男",14)
+var dataClassTwo = dataClassOne.copy()
+var dataClassThree =dataClassOne.copy(name = "李四",sex = "女")
+println(dataClassOne)
+println(dataClassTwo)
+println(dataClassThree)
+println(dataClassOne.equals(dataClassTwo))
+println(dataClassOne.equals(dataClassThree))
 ```
 打印结果
 ```
@@ -353,27 +353,27 @@ enum class EnumClasTwo(val describe: String) {
 
 调用代码
 ```
-        //ordinal表示枚举类型的序号，name表示枚举类型的名称
-        for(i in 0..2){
-            when(i){//普通枚举类
-                EnumClasOne.RED.ordinal ->  println(EnumClasOne.RED.name)
-                EnumClasOne.BLUE.ordinal ->  println(EnumClasOne.BLUE.name)
-                EnumClasOne.BLACK.ordinal ->  println(EnumClasOne.BLACK.name)
-                else -> println("不知道什么鬼颜色")
-            }
-        }
+//ordinal表示枚举类型的序号，name表示枚举类型的名称
+for(i in 0..2){
+    when(i){//普通枚举类
+        EnumClasOne.RED.ordinal ->  println(EnumClasOne.RED.name)
+        EnumClasOne.BLUE.ordinal ->  println(EnumClasOne.BLUE.name)
+        EnumClasOne.BLACK.ordinal ->  println(EnumClasOne.BLACK.name)
+        else -> println("不知道什么鬼颜色")
+    }
+}
 
-        for(i in 0..2){
-            when(i){//普通枚举类
-                //不用name，用自定义属性describe
-                EnumClasTwo.RED.ordinal ->  println(EnumClasTwo.RED.describe)
-                EnumClasTwo.BLUE.ordinal ->  println(EnumClasTwo.BLUE.describe)
-                EnumClasTwo.BLACK.ordinal ->  println(EnumClasTwo.BLACK.describe)
-                //枚举类虽然也可以添加一个主构造函数，但是这个主构造函数不是给别人用的，是给自己用的。外部类是没法调用枚举类的构造函数
-//                else -> EnumClasTwo("什么鬼颜色")
-                else -> println("不知道什么鬼颜色")
-            }
-        }
+for(i in 0..2){
+    when(i){//普通枚举类
+        //不用name，用自定义属性describe
+        EnumClasTwo.RED.ordinal ->  println(EnumClasTwo.RED.describe)
+        EnumClasTwo.BLUE.ordinal ->  println(EnumClasTwo.BLUE.describe)
+        EnumClasTwo.BLACK.ordinal ->  println(EnumClasTwo.BLACK.describe)
+        //枚举类虽然也可以添加一个主构造函数，但是这个主构造函数不是给别人用的，是给自己用的。外部类是没法调用枚举类的构造函数
+//      else -> EnumClasTwo("什么鬼颜色")
+        else -> println("不知道什么鬼颜色")
+    }
+}
 ```
 打印结果
 ```
@@ -414,15 +414,15 @@ open class SealedClassFour : SealedClass()
 ```
 使用代码
 ```
-        var sealedClassTwo = SealedClass.SealedClassTwo()
-        var sealedClassFour = SealedClassFour()
-        var list = arrayOf(sealedClassTwo, sealedClassFour, SealedClass.SealedClassThree.testOne)
-        list.forEach {
-            when (it) {
-                is SealedClass.SealedClassTwo -> println("SealedClassTwo")
-                is SealedClassFour -> println("SealedClassFour")
-                "111" -> println("testOne")
-                //如果包含所有条件，就不需要些else了
-            }
-        }
+var sealedClassTwo = SealedClass.SealedClassTwo()
+var sealedClassFour = SealedClassFour()
+var list = arrayOf(sealedClassTwo, sealedClassFour, SealedClass.SealedClassThree.testOne)
+list.forEach {
+     when (it) {
+          is SealedClass.SealedClassTwo -> println("SealedClassTwo")
+          is SealedClassFour -> println("SealedClassFour")
+          "111" -> println("testOne")
+          //如果包含所有条件，就不需要些else了
+     }
+}
 ```

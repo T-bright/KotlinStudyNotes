@@ -115,22 +115,24 @@ h.forEach {
 ## 4、字符类型
 和 Java 不一样，Kotlin 中的 Char 不能直接和数字操作，Char 必需是单引号 ' 包含起来的。比如普通字符 '0'，'a'。
 ```
-    fun check(c : Char){
+fun check(c : Char){
 //        if(c == 97){//Kotlin中不可以这么写，编译不通过
 //
 //        }
-        if(c.toInt() == 97){
-            println(c)
-        }
-        if(c == 'a'){
-            println(c)
-        }
-    }
+if(c.toInt() == 97){
+    println(c)
+ }
+if(c == 'a'){
+    println(c)
+   }
+}
     
-    字符字面值用单引号括起来: '1'。 特殊字符可以用反斜杠转义。 
-    支持这几个转义序列：\t-->制表符;\b-->退格符;\n-->换行符;\r-->回车符;\'-->单引符;\"-->双引符;\\-->反斜杠。
-    编码其他字符要用 Unicode 转义序列语法：'\uFF00'。
 ```
+字符字面值用单引号括起来: '1'。 特殊字符可以用反斜杠转义。 
+
+支持这几个转义序列：\t-->制表符;\b-->退格符;\n-->换行符;\r-->回车符;\'-->单引符;\"-->双引符;\\-->反斜杠。
+编码其他字符要用 Unicode 转义序列语法：'\uFF00'。
+
 
 ## 5、字符串类型
 字符串 用String 类型表示。字符面值用双引号括起来："我是字符串"，如果是转义字符串，可以参考java，很像。
@@ -150,40 +152,39 @@ h.forEach {
 - 字符串相加 ；字符串和字符相加
 ```
 var str = "one"+ 'd'+ "two" + 't'
-
 ```
 -  元组（Tuple），给多个变量同时赋值，分二元（Pair）和三元（Triple）
 ```
-        val (year ,month,day) = Triple(2017,"6月","14号")
-        println("${year}年${month}${day}")
-        val date1 = Triple(2017,"6月","14号")
-        println("${date1.first}年${date1.second}${date1.third}")
-        //二元同上，把Triple换成Pair
+val (year ,month,day) = Triple(2017,"6月","14号")
+println("${year}年${month}${day}")
+val date1 = Triple(2017,"6月","14号")
+println("${date1.first}年${date1.second}${date1.third}")
+//二元同上，把Triple换成Pair
 ```
 
 ## 6、字符串模板
 ```
 //字符串模板：各种变量组合成一个动态的字符串，模板表达式以美元符（$）开头，由一个简单的名字构成:
-        val i = 10
-        println("i等于${i}")
+val i = 10
+println("i等于${i}")
 //原生字符串和转义字符串内部都支持模板。 如果你需要在原生字符串中表示字面值 $ 字符（它不支持反斜杠转义），你可以用下列语法：
-        println("小米价格是${'$'}${i}")
+println("小米价格是${'$'}${i}")
 ```
 
 # 二、Kotlin的数据类型操作
 ## 1、null判断总结
 - 申明是否可以为null的字符串
 ```
-        //申明一个不可为null的String类型变量
-        var a: String = "abc" // 这个String类型的变量不可赋值为null
-        a = null; //如果赋值为null编译不通过
+//申明一个不可为null的String类型变量
+var a: String = "abc" // 这个String类型的变量不可赋值为null
+a = null; //如果赋值为null编译不通过
 
-        //申明一个可为null的String类型变量
-        var b: String? = null// String?   表示String类型的变量可以为null
+//申明一个可为null的String类型变量
+var b: String? = null// String?   表示String类型的变量可以为null
         
-        //此时，如果想要调用a的相关方法，是没有问题的。但是调用b的相关方法是无法通过编译的，因为可能为null
-        var aLength = a.length
-        var bLength = b.length//无法通过编译
+//此时，如果想要调用a的相关方法，是没有问题的。但是调用b的相关方法是无法通过编译的，因为可能为null
+var aLength = a.length
+var bLength = b.length//无法通过编译
 ```
 - 空字符串的处理
 
