@@ -1,5 +1,6 @@
 package tsw.kotlin.newcharacteristics.a_kotlingrammar.a_basic
 
+import android.util.Log
 
 
 /**
@@ -23,9 +24,9 @@ class A_DataType {
         val hexBytes = 0xFF_EC_DE_5E
         val bytes = 0b11010010_01101001_10010100_10010010
 
-        val isTrue = true;
+        val isTrue = true
 
-        println(twoBinarySystem)
+        Log.e(TAG,"${twoBinarySystem}")
     }
 
     //数组类型
@@ -56,41 +57,41 @@ class A_DataType {
         var h: Array<String> = arrayOf("1", "2", "3")
         // 遍历数组元素
         for (item in h) {
-            println(item)
+            Log.e(TAG,"${item}")
         }
         // 遍历数组下标
         for (item in h.indices) {
-            println(item)
+            Log.e(TAG,"${item}")
         }
         // 迭代器遍历数组1
         val it = h.iterator()
         for (item in it.iterator()) {
-            println(item)
+            Log.e(TAG,"${item}")
         }
         // 迭代器遍历数组2
         val it1 = h.iterator()
         it1.forEach {
-            println(it)
+            Log.e(TAG,"${it}")
         }
         // forEach遍历数组
         h.forEach {
-            println(it)
+            Log.e(TAG,"${it}")
         }
     }
 
-    fun check(c: Char) {
+    fun char(c: Char) {
 //        if(c == 97){//Kotlin中不可以这么写，编译不通过
 //
 //        }
         if (c.toInt() == 97) {
-            println(c)
+            Log.e(TAG,"${c}")
         }
         if (c == 'a') {
-            println(c)
+            Log.e(TAG,"${c}")
         }
     }
 
-    //字符串操作，和字符串模板操作
+    //字符串操作，和字符串模板操作,
     fun stringOperation() {
         //字符串声明
         var courseName = "谷歌发布TensorFlow Lite，苹果不甘示弱祭出Core ML"
@@ -158,10 +159,13 @@ class A_DataType {
         var sex = true
         var date = "2012年12月25日"
         var time = "12点32分"
-        var cacke = "操你妈逼起来嗨"
+        var cacke = "遛狗"
 
         val orderInfo = "你好${name}写别${if (sex) "boy" else "girl"}" + "您已于${date}进入${date}\t${time}" + "动作${cacke}"
         println(orderInfo)
+
+        //上面的这一段不知道从哪个地方copy过来的，没找到了----------------------------------------------------------------------------
+
 
         val text = """
       |Tell me and I forget.
@@ -206,7 +210,7 @@ class A_DataType {
         var strArray: Array<String?> = arrayOf("A", "B", null)
         for (str in strArray) {
             str?.let {
-                println(str)//只对非空值进行操作
+                Log.e(TAG,"${str}")//只对非空值进行操作
             }
         }
 
@@ -220,15 +224,21 @@ class A_DataType {
 
         bLength1 = if (b != null) b.length else -1 //如果b为null，就返回-1
 
+        Log.e(TAG,"${bLength1}")
+
         //如果 ?: 左侧表达式非空，elvis 操作符就调用其左侧表达式;当左侧表达式为空时，则调用右侧表达式。
         bLength1 = b?.length ?: -1  //如果b为null，就返回-1
+        Log.e(TAG,"${bLength1}")
 
-        bLength = b!!.length //如果b为空，则抛出NullPointerException异常
 
+        bLength1 = b!!.length //如果b为空，则抛出NullPointerException异常
+        Log.e(TAG,"${bLength1}")
+
+        getStrLength(b)
     }
 
     //由于 throw 和 return 语句在 Kotlin 中都是表达式，所以它们也可以用在 elvis 操作符右侧。
-    fun getStrLength(b: String?): Int {
+    private fun getStrLength(b: String?): Int {
         val bLength2 = b?.length ?: return -1
         val bLength3 = b?.length ?: throw NullPointerException("b is null")
         return bLength3
@@ -237,10 +247,8 @@ class A_DataType {
     //安全的类型转换
     fun isClassCastException(){
         var b : String= "aaa"
-        var bb : Int? = b as? Int
-        var bbb : Int = b as Int
-        println(if(bb != null)bb else -1)
+        var bb : Int? = b as? Int//不会抛异常
+        var bbb : Int = b as Int//会抛异常
+        Log.e(TAG,"${if(bb != null)bb else -1}")
     }
-
-
 }

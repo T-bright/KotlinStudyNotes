@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".a_kotlingrammar.b_condition.ConditionControlActivity">
+    <Button
+            android:id="@+id/if_else_condition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="if..else表达式"
+            android:gravity="center"/>
+
+    <Button
+            android:id="@+id/when_condition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="when表达式"
+            android:gravity="center"/>
+</LinearLayout>

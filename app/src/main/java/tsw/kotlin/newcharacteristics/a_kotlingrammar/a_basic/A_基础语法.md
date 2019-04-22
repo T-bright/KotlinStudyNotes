@@ -22,92 +22,94 @@ Byte	|8
 - 浮点数值
   - Double的默认写法：123.5,  123.5e10
   - Float使用f或者F结尾：123.5f 
+  
+详细请看代码  ：
 ```
-        val decimalSystem : Int= 123             //十进制123
-        val sixteenBinarySystem : Int =  0x7b    //十六进制123
-        val twoBinarySystem : Int= 0b1111011     //二进制123
-        val doubelData :Double = 123.5           //Double类型
-        val floatData :Float= 123.5F             //Float类型
+val decimalSystem : Int= 123             //十进制123
+val sixteenBinarySystem : Int =  0x7b    //十六进制123
+val twoBinarySystem : Int= 0b1111011     //二进制123
+val doubelData :Double = 123.5           //Double类型
+val floatData :Float= 123.5F             //Float类型
         
-        //上面的代码也可以写成这样
-        val decimalSystem = 123           //十进制123
-        val sixteenBinarySystem  =  0x7b  //十六进制123
-        val twoBinarySystem = 0b1111011   //二进制123
-        val doubelData  = 123.0           //Double类型
-        val floatData = 123.0F            //Float类型
+//上面的代码也可以写成这样
+val decimalSystem = 123           //十进制123
+val sixteenBinarySystem  =  0x7b  //十六进制123
+val twoBinarySystem = 0b1111011   //二进制123
+val doubelData  = 123.0           //Double类型
+val floatData = 123.0F            //Float类型
 ```
   
-- 可以使用下划线使得数值常量更加易读
+上述代码也可以使用下划线使得数值常量更加易读
 ```
-        val oneMillion = 1_000_000
-        val creditCardNumber = 1234_5678_9012_3456L
-        val socialSecurityNumber = 999_99_9999L
-        val hexBytes = 0xFF_EC_DE_5E
-        val bytes = 0b11010010_01101001_10010100_10010010
+val oneMillion = 1_000_000
+val creditCardNumber = 1234_5678_9012_3456L
+val socialSecurityNumber = 999_99_9999L
+val hexBytes = 0xFF_EC_DE_5E
+val bytes = 0b11010010_01101001_10010100_10010010
 ```
 
 ## 2、布尔类型
 Kotlin的布尔类型和java一样只有两个值，用true和false表示。
 ```
- val isTrue : Boolean = true
- val isFalse : Boolean= false
+val isTrue : Boolean = true
+val isFalse : Boolean= false
 ```
 ## 3、数组类型
 数组用类 Array 实现，并且还有一个 size 属性及 get 和 set 方法，由于使用 [] 重载了 get 和 set 方法，所以我们可以通过下标很方便的获取或者设置数组对应位置的值。
 数组的创建两种方式：一种是使用函数arrayOf()；另外一种是使用工厂函数。如下所示，我们分别是两种方式创建了两个数组：
 - 数组的创建
 ```
-        var a = Array(5,{0})                           // 创建指定长度的数组，初始化长度为5，元素均为0.
-        for (i in 0..4) {//给数组赋值
-            a[i] = i+1
-        }
+var a = Array(5,{0})                           // 创建指定长度的数组，初始化长度为5，元素均为0.
+for (i in 0..4) {//给数组赋值
+    a[i] = i+1
+}
 
-        var b = Array(5,{0;1})                         // 创建指定长度的数组，初始化长度为5，元素均为1.
-        for (i in 0..4) {//给数组赋值
-            b[i] = i+1
-        }
+var b = Array(5,{0;1})                         // 创建指定长度的数组，初始化长度为5，元素均为1.
+for (i in 0..4) {//给数组赋值
+    b[i] = i+1
+}
         
-        var c : Array<Int> = Array(5,{ i -> i+1})     //使用闭包创建数组。初始化长度为5，元素为1,2,3,4,5
-        var d : Array<Int> = arrayOf(1, 2, 3,4,5)     //使用Kotlin封装方法创建数组,元素为1,2,3,4,5
-        var e : IntArray = intArrayOf(1,2,3,4,5)      //使用Kotlin封装方法创建数组,元素为1,2,3,4,5
+var c : Array<Int> = Array(5,{ i -> i+1})     //使用闭包创建数组。初始化长度为5，元素为1,2,3,4,5
+var d : Array<Int> = arrayOf(1, 2, 3,4,5)     //使用Kotlin封装方法创建数组,元素为1,2,3,4,5
+var e : IntArray = intArrayOf(1,2,3,4,5)      //使用Kotlin封装方法创建数组,元素为1,2,3,4,5
         
-        //其它基本类型的数组声明与之类似，只要把int替换为long、float、double、boolean、char即可。
-        var f: Array<Char> = arrayOf('1', '2', '3')
-        var g: CharArray = charArrayOf('1', '2', '3')
+//其它基本类型的数组声明与之类似，只要把int替换为long、float、double、boolean、char即可。
+var f: Array<Char> = arrayOf('1', '2', '3')
+var g: CharArray = charArrayOf('1', '2', '3')
         
-        //这里还有一个注意的点,String类型的数组只能通过arrayOf或者Array去创建，没有stringArrayOf
-        var h: Array<String> = arrayOf("1", "2", "3")
-        var i: Array<String> = Array(3, { "0" })
-        for (n in 0..2) {//给数组赋值
-            i[n] = (n+1).toString()
-        }
+//这里还有一个注意的点,String类型的数组只能通过arrayOf或者Array去创建，没有stringArrayOf
+var h: Array<String> = arrayOf("1", "2", "3")
+var i: Array<String> = Array(3, { "0" })
+for (n in 0..2) {//给数组赋值
+    i[n] = (n+1).toString()
+}
            
 ```
 - 数组的遍历
 ```
-        var h: Array<String> = arrayOf("1", "2", "3")
-        // 遍历数组元素
-        for (item in h) {
-            println(item)
-        }
-        // 遍历数组下标
-        for (item in h.indices) {
-            println(item)
-        }
-       // 迭代器遍历数组1
-        val it = h.iterator()
-        for (item in it.iterator()) {
-            println(item)
-        }
-       // 迭代器遍历数组2
-        val it1 = h.iterator()
-        it1.forEach {
-            println(it)
-        }
-       // forEach遍历数组
-        h.forEach {
-            println(it)
-        }
+var h: Array<String> = arrayOf("1", "2", "3")
+// 遍历数组元素
+ for (item in h) {
+     println(item)
+ }
+// 遍历数组下标
+for (item in h.indices) {
+    println(item)
+}
+// 迭代器遍历数组1
+val it = h.iterator()
+for (item in it.iterator()) {
+    println(item)
+}
+// 迭代器遍历数组2
+val it1 = h.iterator()
+it1.forEach {
+      println(it)
+}
+// forEach遍历数组
+h.forEach {
+    println(it)
+}
 ```
 
 ## 4、字符类型

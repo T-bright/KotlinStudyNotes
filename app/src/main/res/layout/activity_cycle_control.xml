@@ -6,35 +6,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context=".a_kotlingrammar.c_cyclecontrol.CycleControlActivity">
     <Button
-            android:id="@+id/basic"
+            android:id="@+id/for_condition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="基础语法"
+            android:text="常见的for循环"
+            android:gravity="center"/>
+
+    <Button
+            android:id="@+id/return_condition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="循环中的返回和跳转"
             android:gravity="center"/>
     <Button
-            android:id="@+id/condition_control"
+            android:id="@+id/while_condition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="条件空值语句"
-            android:gravity="center"/>
-    <Button
-            android:id="@+id/cycle_control"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="循环"
-            android:gravity="center"/>
-    <Button
-            android:id="@+id/classes_object"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="类和对象"
-            android:gravity="center"/>
-    <Button
-            android:id="@+id/function"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="函数"
+            android:text="while循环控制"
             android:gravity="center"/>
 </LinearLayout>

@@ -91,21 +91,27 @@ class FunctionActivity : AppCompatActivity(), View.OnClickListener {
             }
             R.id.twelve -> {
                 functionData.functionFilter()
+                show.text = "filter函数"
             }
             R.id.thirteen -> {
                 functionData.functionTakeWhile()
+                show.text = "takeWhile函数"
             }
             R.id.fourteen -> {
                 functionData.functionMap()
+                show.text = "map函数"
             }
             R.id.fifteen -> {
                 functionData.functionReduce()
+                show.text = "reduce函数"
             }
             R.id.sixteen -> {
                 functionData.functionFold()
+                show.text = "fold函数"
             }
             R.id.seventeen -> {
                 functionData.functionUse(this)
+                show.text = "use函数"
             }
         }
     }

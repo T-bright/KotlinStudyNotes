@@ -2,39 +2,44 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".MainActivity">
+        tools:context=".a_kotlingrammar.a_basic.DataTypeActivity">
     <Button
-            android:id="@+id/basic"
+            android:id="@+id/basic_data_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="基础语法"
+            android:text="基本数据类型"
             android:gravity="center"/>
     <Button
-            android:id="@+id/condition_control"
+            android:id="@+id/array_data_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="条件空值语句"
+            android:text="数组类型"
             android:gravity="center"/>
     <Button
-            android:id="@+id/cycle_control"
+            android:id="@+id/char_data_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="循环"
+            android:text="字符类型"
             android:gravity="center"/>
     <Button
-            android:id="@+id/classes_object"
+            android:id="@+id/string_data_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="类和对象"
+            android:text="字符串操作和字符串模板操作"
             android:gravity="center"/>
     <Button
-            android:id="@+id/function"
+            android:id="@+id/null_data_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="函数"
+            android:text="空判断"
+            android:gravity="center"/>
+    <Button
+            android:id="@+id/classCast_data_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="安全的类型转换"
             android:gravity="center"/>
 </LinearLayout>
