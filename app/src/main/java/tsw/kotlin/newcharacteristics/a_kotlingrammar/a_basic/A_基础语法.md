@@ -146,7 +146,7 @@ if(c == 'a'){
       |Tell me and I forget.
       |Teach me and I remember.
       |Involve me and I learn.
-      |(Benjamin Franklin)
+      |(Benjamin Franklin) 
     """
 ```
 - 字符串相加 ；字符串和字符相加
