@@ -32,5 +32,9 @@
             android:text="泛型的星号投射"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
+    <Button
+            android:id="@+id/sixtest"
+            android:text="反射"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 </LinearLayout>

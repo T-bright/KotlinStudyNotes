@@ -42,13 +42,6 @@
             android:id="@+id/generic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="泛型"
-            android:gravity="center"/>
-
-    <Button
-            android:id="@+id/reflect"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="反射"
+            android:text="泛型和反射"
             android:gravity="center"/>
 </LinearLayout>

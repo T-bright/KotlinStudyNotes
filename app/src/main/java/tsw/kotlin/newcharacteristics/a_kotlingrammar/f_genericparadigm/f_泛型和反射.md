@@ -200,8 +200,30 @@ Kotlin与Java不同的是，Kotlin没有通配符类型，但它有两个另外�
    
    ArrayList<Any?> 表示包含任何类型的元素，所以你可以随便写入。
 
+# 二、反射
+在Kotlin中字节码对应的类是kotlin.reflect.KClass。因为Kotlin是100%兼容java的，所以在kotlin中怎么使用java的class反射对象呢？
 
+比如说 Intent ，它需要的是一个java类型的class对象，如果传一个Kotlin类型的kClass对象，肯定不行。
 
+代码如下
+```
+fun sixTest() {
+    //-----------------------------获取kotlin的Kclass对象------------------------
+    //1.通过类::class的方式获取Kclass实例-
+    val kClass: KClass<GenericParadigm> = GenericParadigm::class
+
+    //2.通过实例.javaClass.kotlin获取Kclass实例
+    val genericParadigm = GenericParadigm()
+    val kClass1: KClass<GenericParadigm> = genericParadigm.javaClass.kotlin
+
+    //-----------------------------在kotlin中获取java的class对象------------------------
+    //1.通过类Kclass类的.java属性
+    val clazz = GenericParadigm::class.java
+
+    //2.通过实例.javaClass获取java的class对象
+    val javaClass : Class<GenericParadigm> = genericParadigm.javaClass
+ }
+```
 
 
 

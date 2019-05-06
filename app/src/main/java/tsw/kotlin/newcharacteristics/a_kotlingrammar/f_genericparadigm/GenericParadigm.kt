@@ -1,6 +1,7 @@
 package tsw.kotlin.newcharacteristics.a_kotlingrammar.f_genericparadigm
 
 import android.util.Log
+import kotlin.reflect.KClass
 
 /**
  * 泛型的相关语法
@@ -118,6 +119,23 @@ open class GenericParadigm {
 //        arrayListo.add(parameterStr)  // 编译器报错
     }
 
+
+    fun sixTest() {
+        //-----------------------------获取kotlin的Kclass对象------------------------
+        //1.通过类::class的方式获取Kclass实例-
+        val kClass: KClass<GenericParadigm> = GenericParadigm::class
+
+        //2.通过实例.javaClass.kotlin获取Kclass实例
+        val genericParadigm = GenericParadigm()
+        val kClass1: KClass<GenericParadigm> = genericParadigm.javaClass.kotlin
+
+        //-----------------------------在kotlin中获取java的class对象------------------------
+        //1.通过类Kclass类的.java属性
+        val clazz = GenericParadigm::class.java
+
+        //2.通过实例.javaClass获取java的class对象
+        val javaClass : Class<GenericParadigm> = genericParadigm.javaClass
+    }
 
     fun log(message: String) {
         Log.e("GenericParadigm", message)

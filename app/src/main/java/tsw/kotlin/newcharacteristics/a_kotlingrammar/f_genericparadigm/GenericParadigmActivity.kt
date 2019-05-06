@@ -35,6 +35,11 @@ class GenericParadigmActivity : AppCompatActivity() {
             genericParadigm.fiveTest()
             show("泛型的星号投射")
         }
+
+        sixtest.setOnClickListener {
+            genericParadigm.sixTest()
+            show("反射")
+        }
     }
 
     fun show(text: CharSequence) {
