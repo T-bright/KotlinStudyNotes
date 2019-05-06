@@ -1,6 +1,7 @@
 Kotlin学习笔记，编辑器使用的是AndroidStudio
 
 学习的框架图
+![Alt](https://github.com/T-bright/KotlinStudyNotes/blob/master/picture/kotlin.png)
 
 
 [一、kotlin基础语法](https://github.com/T-bright/KotlinStudyNotes/blob/master/app/src/main/java/tsw/kotlin/newcharacteristics/a_kotlingrammar/a_basic/A_%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95.md "kotlin基础语法")
@@ -14,4 +15,5 @@ Kotlin学习笔记，编辑器使用的是AndroidStudio
 [五、kotlin函数](https://github.com/T-bright/KotlinStudyNotes/blob/master/app/src/main/java/tsw/kotlin/newcharacteristics/a_kotlingrammar/e_function/e_%E5%87%BD%E6%95%B0.md "kotlin函数")
 
 [六、kotlin泛型和反射](https://github.com/T-bright/KotlinStudyNotes/blob/master/app/src/main/java/tsw/kotlin/newcharacteristics/a_kotlingrammar/f_genericparadigm/f_%E6%B3%9B%E5%9E%8B%E5%92%8C%E5%8F%8D%E5%B0%84.md "kotlin泛型和反射")
+
 
