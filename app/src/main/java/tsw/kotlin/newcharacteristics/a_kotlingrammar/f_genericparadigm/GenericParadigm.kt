@@ -2,11 +2,17 @@ package tsw.kotlin.newcharacteristics.a_kotlingrammar.f_genericparadigm
 
 import android.util.Log
 
+/**
+ * 泛型的相关语法
+ */
 open class GenericParadigm {
     open var value = "Generic_Paradigm"
 
     class TestOneClass<T>(t: T) {
         var value = t
+        fun merge(one: TestOneClass<in T>, two: TestOneClass<T>) {
+
+        }
     }
 
     class TestTwoClass<T : GenericParadigm>(t: T) {
@@ -60,6 +66,8 @@ open class GenericParadigm {
         var testThreeClass = testTwoClass.value
         log(testThreeClass.value)
 
+
+        //泛型的多个约束
         copy(listOf<String>("1", "5", "6"), "4")
 
     }
@@ -89,6 +97,27 @@ open class GenericParadigm {
         //下面这行代码编译不通过，因为协变类型限定其或其子类，而GenericParadigm是TestThreeClass的父类，所以编译不通过
 //        testThreeClassXB = genericParadigmXB
     }
+
+    //类型投影
+    fun fourTest() {
+        var parameterStr = TestOneClass<String>("11")
+        val parameterAny = TestOneClass<Any>("")
+        parameterStr.merge(parameterAny, parameterStr)
+    }
+
+    //星号投射
+    fun fiveTest() {
+        var parameterStr = TestOneClass<String>("11")
+        val arrayListAny: ArrayList<Any?> = arrayListOf("a", 1, 'c')
+        arrayListAny.add(parameterStr)
+
+        val arrayListX: ArrayList<*> = arrayListOf("a", 1, 'c')
+//        arrayListX.add(parameterStr) // 编译器报错
+
+        val arrayListo: ArrayList<out Any?> = arrayListOf("a", 1, 'c')
+//        arrayListo.add(parameterStr)  // 编译器报错
+    }
+
 
     fun log(message: String) {
         Log.e("GenericParadigm", message)
