@@ -10,6 +10,7 @@ import tsw.kotlin.newcharacteristics.a_kotlingrammar.c_cyclecontrol.CycleControl
 import tsw.kotlin.newcharacteristics.a_kotlingrammar.d_classesandobjects.ClassAndObjectActivity
 import tsw.kotlin.newcharacteristics.a_kotlingrammar.e_function.FunctionActivity
 import tsw.kotlin.newcharacteristics.a_kotlingrammar.f_genericparadigm.GenericParadigmActivity
+import tsw.kotlin.newcharacteristics.a_kotlingrammar.g_coroutines.CoroutinesActivity
 
 //参考：http://www.runoob.com/kotlin/kotlin-basic-types.html
 class MainActivity : AppCompatActivity() {
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
 
         generic.setOnClickListener { startActivity(Intent(this, GenericParadigmActivity::class.java)) }//泛型和反射
 
+        coroutines.setOnClickListener { startActivity(Intent(this,CoroutinesActivity::class.java)) }//协程
     }
 
 }
